@@ -13,3 +13,11 @@ changeButon.onclick=function(){
         encendido=false;
     }
 }
+/* Modificar pq hay 2 sliders mi loko */
+let slider = document.getElementById("myRange");
+let output = document.getElementById("demo");
+output.innerHTML = slider.value;
+
+slider.oninput = function() {
+  output.innerHTML = this.value;
+}

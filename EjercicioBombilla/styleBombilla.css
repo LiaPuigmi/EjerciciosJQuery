@@ -26,7 +26,7 @@ body{
     width: auto;
     margin: 10px;
     filter: brightness(1.5); 
-    transform: rotate(0deg) scale(0.33);
+    transform: rotate(0deg) scale(1);
     padding: 50px;
     margin-left: 100px;
 }

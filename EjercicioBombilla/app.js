@@ -15,7 +15,7 @@ output3.innerHTML = (parseFloat(slider3.value) / 2).toFixed(2).toString();
 output.innerHTML = slider.value;
 slider.oninput = function () {
     output.innerHTML = slider.value;
-    bombi.setAttribute("style", `filter:brightness(${slider.value})`);
+    bombi.setAttribute("style", `filter:brightness(${slider.value} transform:rotate(${slider2.value}deg)`);
     imageBody.setAttribute("style", `filter:brightness(${slider.value})`);
 };
 changeButon.onclick = function () {
@@ -46,6 +46,6 @@ slider2.oninput = function () {
     bombi.setAttribute("style", `transform:rotate(${slider2.value}deg)`);
 };
 slider3.oninput = function () {
-    output3.innerHTML = (parseFloat(slider3.value) / 3).toFixed(2).toString();
+    output3.innerHTML = (parseFloat(slider3.value) / 2).toFixed(2).toString();
     bombi.setAttribute("style", `transform:scale(${(parseFloat(slider3.value) / 2).toFixed(2)})`);
 };

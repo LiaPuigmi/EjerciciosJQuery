@@ -14,18 +14,19 @@ let output3 = document.getElementById("demo3");
 output3.innerHTML = (parseFloat(slider3.value) / 2).toFixed(2).toString();
 output.innerHTML = slider.value;
 slider.oninput = function () {
-    output.innerHTML = slider.value;
-    bombi.setAttribute("style", `filter:brightness(${slider.value} transform:rotate(${slider2.value}deg)`);
+    bombi = document.getElementById('bombi');
+    changeStyle(slider.value, slider2.value, (parseFloat(slider3.value) / 2).toFixed(2).toString(), bombi);
     imageBody.setAttribute("style", `filter:brightness(${slider.value})`);
 };
 changeButon.onclick = function () {
+    bombi = document.getElementById('bombi');
     if (encendido == false) {
         bombi.src = './on.png';
         interruptor.src = './bon.jpg';
         slider.min = '1';
         slider.max = '3';
         output.innerHTML = slider.value;
-        bombi.setAttribute("style", `filter:brightness(${slider.value})`);
+        changeStyle(slider.value, slider2.value, (parseFloat(slider3.value) / 2).toFixed(2).toString(), bombi);
         imageBody.setAttribute("style", `filter:brightness(${slider.value})`);
         encendido = true;
     }
@@ -36,16 +37,29 @@ changeButon.onclick = function () {
         slider.max = '0';
         slider.min = '0';
         output.innerHTML = slider.value;
-        bombi.setAttribute("style", 'filter:brightness(1)');
+        changeStyle('1', slider2.value, (parseFloat(slider3.value) / 2).toFixed(2).toString(), bombi);
         imageBody.setAttribute("style", `filter:brightness(${slider.value})`);
         encendido = false;
     }
 };
 slider2.oninput = function () {
-    output2.innerHTML = slider2.value;
-    bombi.setAttribute("style", `transform:rotate(${slider2.value}deg)`);
+    bombi = document.getElementById('bombi');
+    changeStyle(slider.value, slider2.value, (parseFloat(slider3.value) / 2).toFixed(2).toString(), bombi);
 };
 slider3.oninput = function () {
-    output3.innerHTML = (parseFloat(slider3.value) / 2).toFixed(2).toString();
-    bombi.setAttribute("style", `transform:scale(${(parseFloat(slider3.value) / 2).toFixed(2)})`);
+    bombi = document.getElementById('bombi');
+    changeStyle(slider.value, slider2.value, (parseFloat(slider3.value) / 2).toFixed(2).toString(), bombi);
 };
+function changeStyle(luz, rotacion, zoom, bombilla) {
+    output.innerHTML = luz.toString();
+    console.log('Luz: ' + luz.toString());
+    output2.innerHTML = rotacion.toString();
+    console.log('Rotacion: ' + rotacion.toString());
+    output3.innerHTML = zoom.toString();
+    console.log('Zoom: ' + zoom.toString());
+    if (encendido == false) {
+        luz = '1';
+    }
+    bombilla.style.transform = `rotate(${rotacion}deg) scale(${zoom})`;
+    bombilla.style.filter = `brightness(${luz})`;
+}
